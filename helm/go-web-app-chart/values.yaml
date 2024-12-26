@@ -8,7 +8,7 @@ image:
   repository: saitmv/go-web-app
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "12499548695"
+  tag: "12500160098"
 
 ingress:
   enabled: false
