@@ -38,11 +38,24 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
+    - name: Set up Go
+      uses: actions/setup-go@v3
+      with:
+        go-version: go1.23.4  # Replace with your Go version
+
+    - name: Cache GolangCI-Lint
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/golangci-lint
+        key: ${{ runner.os }}-golangci-lint-cache
+        restore-keys: |
+          ${{ runner.os }}-golangci-lint-cache
 
     - name: Run golangci-lint
       uses: golangci/golangci-lint-action@v6
       with:
         version: v1.56.2
+        args: "--timeout 5m"
   
   push:
     runs-on: ubuntu-latest
